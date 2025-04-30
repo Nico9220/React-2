@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Components/Header/Header';
 import { Routes } from 'react-router-dom';
-import Consumo from './pages/listaCartas';
+import Consumo from './pages/Cartas';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         </Routes>
       </main>
         
-      {/* Más adelante iría el Footer */}
+      <Footer />
     </div>
   );
 }

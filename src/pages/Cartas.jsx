@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ListaCartas from '../Components/ListaCartas/ListaCartas';
 
-const DetallesDeCartas = () => {
+const ListaCartasPage = () => {
   const [cartas, setCartas] = useState([]);
-  const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const obtenerCartas = async () => {
@@ -46,4 +46,4 @@ const DetallesDeCartas = () => {
   );
 };
 
-export default DetallesDeCartas;
+export default ListaCartasPage;
