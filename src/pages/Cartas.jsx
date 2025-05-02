@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ListaCartas from '../Components/ListaCartas/ListaCartas';
+import { useTranslation } from 'react-i18next';
 
 const ListaCartasPage = () => {
+  const { t } = useTranslation();
+
   const [cartas, setCartas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -40,7 +43,8 @@ const ListaCartasPage = () => {
 
   return (
     <div>
-      <h1 className="text-4xl text-white text-center my-6 font-bold">Cartas</h1>
+      <h1 className="text-4xl text-white text-center my-6 font-bold">{t('Cartas')}</h1>
+      
       <ListaCartas cartas={cartas} />
     </div>
   );
