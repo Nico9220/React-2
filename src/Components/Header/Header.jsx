@@ -28,13 +28,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold hover:text-gray-500 transition">
+        <Link to="/cartas" className="text-2xl font-bold hover:text-gray-500 transition">
           Magic: The Gathering
         </Link>
 
         {/* Navegación para escritorio */}
         <nav className="hidden sm:flex items-center gap-6 text-lg">
-          <Link to="/" className="hover:text-gray-500 transition">
+          <Link to="/cartas" className="hover:text-gray-500 transition">
             {t('Inicio')}
           </Link>
           <Link to="/favoritos" className="hover:text-gray-500 transition">

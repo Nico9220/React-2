@@ -11,6 +11,7 @@ const ListaCartas = ({ cartas }) => {
       {cartas.map((carta) => (
         <CardCarta
           key={carta.id}
+          id= {carta.id} 
           nombre={carta.name}
           imagen={carta.image_uris.normal}
           tipo={carta.type_line}

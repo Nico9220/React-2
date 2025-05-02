@@ -3,21 +3,33 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Components/Header/Header';
-import { Routes } from 'react-router-dom';
 import Consumo from './pages/Cartas';
 import Footer from './Components/Footer/Footer';
 import './i18n';
 import Banner from './Components/Banner/Banner';
+import Detalles from './pages/Detalles';
+import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
     <div className='min-h-screen flex flex-col'>
       <Header />
-      <Banner />
-      <Consumo />
+      
       <main className='flex-grow'>
         <Routes>
-          {/** Acá irían las rutas */}
+          <Route 
+            path= "/cartas"
+            element={
+              <>
+                <Banner />
+                <Consumo />
+              </>
+            }
+          />
+          
+          <Route path="/cartas/:id" element={<Detalles />} />
+
         </Routes>
       </main>
         
