@@ -8,7 +8,7 @@ import Footer from './Components/Footer/Footer';
 import './i18n';
 import Banner from './Components/Banner/Banner';
 import Detalles from './pages/Detalles';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 
 function App() {
@@ -16,8 +16,9 @@ function App() {
     <div className='min-h-screen flex flex-col'>
       <Header />
       
-      <main className='flex-grow'>
+      <main className='flex-grow min-h-screen'>
         <Routes>
+        <Route path="/" element={<Navigate to="/cartas" />} />
           <Route 
             path= "/cartas"
             element={
