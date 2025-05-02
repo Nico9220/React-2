@@ -8,6 +8,7 @@ const ListaCartasPage = () => {
   const [cartas, setCartas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const [busqueda, setBusqueda] = useState('');
 
   useEffect(() => {
     const obtenerCartas = async () => {
@@ -28,6 +29,7 @@ const ListaCartasPage = () => {
           }));
 
         setCartas(cartasAdaptadas);
+        
         setCargando(false);
       } catch (err) {
         setError(err);
@@ -41,11 +43,28 @@ const ListaCartasPage = () => {
   if (cargando) return <p className="text-white text-center mt-10">Cargando cartas...</p>;
   if (error) return <p className="text-red-500 text-center mt-10">Error: {error.message}</p>;
 
+  const cartasFiltradas = cartas.filter((carta) =>
+    carta.name.toLowerCase().includes(busqueda.toLowerCase())
+  );
+  
+
   return (
     <div className="pt-200">
       <h1 className="text-4xl text-white text-center my-6 font-bold">{t('Cartas')}</h1>
-      
-      <ListaCartas cartas={cartas} />
+      <input
+  type="text"
+  placeholder="Buscar"
+  className="w-full bg-white md:w-1/2 px-4 py-2 mb-6 rounded-md text-black mx-auto block"
+  value={busqueda}
+  onChange={(e) => setBusqueda(e.target.value)}
+/>
+
+{cartasFiltradas.length === 0 ? (
+  <p className="text-white text-center">No se encontraron cartas para “{busqueda}”.</p>
+) : (
+  <ListaCartas cartas={cartasFiltradas} />
+)}
+
     </div>
   );
 };

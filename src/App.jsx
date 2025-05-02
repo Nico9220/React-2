@@ -9,6 +9,7 @@ import './i18n';
 import Banner from './Components/Banner/Banner';
 import Detalles from './pages/Detalles';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import NotFound from './pages/404.jsx';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
           />
           
           <Route path="/cartas/:id" element={<Detalles />} />
-
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
       </main>
         

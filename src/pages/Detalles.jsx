@@ -16,6 +16,12 @@ const Detalles = () => {
       try {
         const respuesta = await fetch(`https://api.magicthegathering.io/v1/cards/${id}`);
         const data = await respuesta.json();
+
+        if (!data.card) {
+            navigate('/404', { replace: true });
+            return;
+          }
+
         setCarta(data.card);
       } catch (err) {
         setError(err);
@@ -29,7 +35,7 @@ const Detalles = () => {
   if (!carta) return <p className="text-white text-center mt-10">Cargando carta...</p>;
 
   return (
-    <div className="max-w-6xl mx-auto p-8 text-white flex flex-col md:flex-row gap-10 items-start mt-24">
+    <div className="max-w-6xl mx-auto p-8 text-white flex flex-col md:flex-row gap-10 items-start mt-55">
   {/* Imagen */}
   <div className="md:w-1/2 flex justify-center">
     {carta.imageUrl && (
