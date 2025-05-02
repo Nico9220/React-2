@@ -10,7 +10,7 @@ import Banner from './Components/Banner/Banner';
 import Detalles from './pages/Detalles';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './pages/404.jsx';
-
+import Favoritos from './pages/Favoritos.jsx';
 
 function App() {
   return (
@@ -31,7 +31,9 @@ function App() {
           />
           
           <Route path="/cartas/:id" element={<Detalles />} />
+          <Route path="/favoritos" element={<Favoritos />} />
             <Route path="*" element={<NotFound/>}/>
+           
         </Routes>
       </main>
         

@@ -1,7 +1,32 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const CardCarta = ({ id, nombre, imagen, tipo, rareza }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = localStorage.getItem('favoritas');
+    if (favorites && JSON.parse(favorites).includes(id)) {
+      setIsFavorite(true);
+    }
+  }, [id]);
+
+  const handleAddToFavorites = () => {
+    const favorites = localStorage.getItem('favoritas');
+    let favoriteIds = favorites ? JSON.parse(favorites) : [];
+
+    if (isFavorite) {
+      favoriteIds = favoriteIds.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      favoriteIds = [...favoriteIds, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem('favoritas', JSON.stringify(favoriteIds));
+  };
+
   return (
     <div className="bg-gray-800 text-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition w-72 flex flex-col justify-between">
       <Link to={`/cartas/${id}`}>
@@ -22,9 +47,12 @@ const CardCarta = ({ id, nombre, imagen, tipo, rareza }) => {
       {/* Botón de favoritos */}
       <div className="px-4 pb-4">
         <button
-          className="mt-2 w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded transition"
+          className={`mt-2 w-full px-4 py-2 text-white text-sm rounded transition ${
+            isFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
+          }`}
+          onClick={handleAddToFavorites}
         >
-          Agregar a Favoritos
+          {isFavorite ? 'Remover de Favoritos' : 'Agregar a Favoritos'}
         </button>
       </div>
     </div>
@@ -40,4 +68,3 @@ CardCarta.propTypes = {
 };
 
 export default CardCarta;
-
