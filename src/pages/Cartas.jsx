@@ -42,7 +42,7 @@ const ListaCartasPage = () => {
   if (error) return <p className="text-red-500 text-center mt-10">Error: {error.message}</p>;
 
   return (
-    <div>
+    <div className="pt-200">
       <h1 className="text-4xl text-white text-center my-6 font-bold">{t('Cartas')}</h1>
       
       <ListaCartas cartas={cartas} />
