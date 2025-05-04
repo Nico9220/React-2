@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 const CardCarta = ({ id, nombre, imagen, tipo, rareza }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const { t } = useTranslation();
+
 
   useEffect(() => {
     const favorites = localStorage.getItem('favoritas');
@@ -46,14 +51,14 @@ const CardCarta = ({ id, nombre, imagen, tipo, rareza }) => {
 
       {/* Botón de favoritos */}
       <div className="px-4 pb-4">
-        <button
-          className={`mt-2 w-full px-4 py-2 text-white text-sm rounded transition ${
-            isFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
-          }`}
-          onClick={handleAddToFavorites}
+      <button
+        className={`mt-2 w-full px-4 py-2 text-white text-sm rounded transition ${
+          isFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
+        }`}
+        onClick={handleAddToFavorites}
         >
-          {isFavorite ? 'Remover de Favoritos' : 'Agregar a Favoritos'}
-        </button>
+        {isFavorite ? t('remove_from_favorites') : t('add_to_favorites')}
+      </button>
       </div>
     </div>
   );

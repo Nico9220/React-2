@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import CardCarta from '../Components/CardCarta/CardCarta';
+import { useTranslation } from 'react-i18next';
 
 const Favoritos = () => {
   const [favoritas, setFavoritas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errores, setErrores] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const obtenerCartasFavoritas = async () => {
@@ -46,21 +48,21 @@ const Favoritos = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center text-white">Cargando tus cartas favoritas...</p>;
+    return <p className="text-center text-white">{t('cargando_favoritos')}</p>;
   }
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-white mb-4">Tus Cartas Favoritas</h2>
+      <h2 className="text-2xl font-bold text-white mb-4">{t('titulo_favoritos')}</h2>
 
       {errores.length > 0 && (
         <div className="bg-red-200 text-red-800 p-3 rounded mb-4">
-          No se pudieron cargar algunas cartas. Es posible que ya no existan.
+          {t('error_cartas')}
         </div>
       )}
 
       {favoritas.length === 0 ? (
-        <p className="text-center text-white">Aún no has agregado ninguna carta válida a tus favoritos.</p>
+        <p className="text-center text-white">{t('sin_favoritos')}</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {favoritas.map((carta) => {

@@ -1,15 +1,21 @@
+import { useTranslation } from 'react-i18next';
+
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-black text-gray-300 py-10 mt-12 border-t border-gray-700 ">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm justify-items-center-safe">
         {/* Sección: Descubrir */}
         <div>
-          <h3 className="text-white font-semibold mb-3 border-b border-orange-500 w-max">DESCUBRIR</h3>
+          <h3 className="text-white font-semibold mb-3 border-b border-orange-500 w-max">
+            {t('DESCUBRIR')}
+          </h3>
           <ul className="space-y-1">
-            <li><a href="#" className="hover:text-white">Artículos</a></li>
-            <li><a href="#" className="hover:text-white">Formatos</a></li>
-            <li><a href="#" className="hover:text-white">Reglas</a></li>
-            <li><a href="#" className="hover:text-white">Fondos de Pantalla</a></li>
+            <li><a href="#" className="hover:text-white">{t('artículos')}</a></li>
+            <li><a href="#" className="hover:text-white">{t('formatos')}</a></li>
+            <li><a href="#" className="hover:text-white">{t('reglas')}</a></li>
+            <li><a href="#" className="hover:text-white">{t('fondos_pantalla')}</a></li>
           </ul>
         </div>
 
