@@ -14,6 +14,12 @@ const Detalles = () => {
     const obtenerCarta = async () => {
       try {
         const respuesta = await fetch(`https://api.magicthegathering.io/v1/cards/${id}`);
+
+        if (!respuesta.ok) {
+          navigate('/404', { replace: true });
+          return;
+        }
+
         const data = await respuesta.json();
 
         if (!data.card) {
@@ -23,7 +29,7 @@ const Detalles = () => {
 
         setCarta(data.card);
       } catch (err) {
-        setError(err);
+        navigate('/404', { replace: true });
       }
     };
 

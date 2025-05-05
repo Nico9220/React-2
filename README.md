@@ -1,12 +1,58 @@
-# React + Vite
+# Magic: The Gathering - SPA con React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 👨‍💻 Integrantes del grupo
 
-Currently, two official plugins are available:
+- FAI-3147 Almiron Abigail Juliana
+- FAI-1440 Avila Dante
+- FAI-4393 Caretta Nicolás
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Objetivo
 
-## Expanding the ESLint configuration
+Este proyecto es una Single Page Application (SPA) desarrollada en React que consume datos de la API pública de Magic: The Gathering. Permite explorar cartas, ver detalles, agregar favoritas, buscar y alternar entre Español e Inglés.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Funcionalidades
+
+### Página principal `/cartas`
+
+- Hace un `fetch` a `https://api.magicthegathering.io/v1/cards`.
+- Muestra cartas en una grilla responsive.
+- Cada carta tiene botón para agregar a favoritos (guardado en Local Storage).
+- Incluye campo de búsqueda por nombre.
+- Muestra mensaje si no hay resultados.
+
+### Página de detalles `/cartas/:id`
+
+- Muestra información detallada de la carta seleccionada.
+- Si el ID no existe, redirige a página **Error 404**.
+- Incluye botón para volver al listado.
+
+### Página de favoritos `/favoritos`
+
+- Consume las cartas favoritas desde Local Storage.
+- Renderiza en grilla.
+- Si no hay favoritas, muestra mensaje.
+- Se guarda solo el `id` para evitar sobrecarga del almacenamiento.
+
+### Idioma
+
+- Implementada con `react-i18next`.
+- Alternancia entre **Español** e **Inglés**.
+- Traducciones aplicadas a títulos, botones y texto dinámico.
+
+### Estilos
+
+- **Tailwind CSS**.
+- Banner visual con fondo.
+- Diseño totalmente responsive.
+
+---
+
+## Consideraciones
+
+- La API de MTG puede devolver error 500 para IDs inválidos. Fue manejado con redirección a 404.
+- El `localStorage` solo almacena los IDs de cartas favoritas, no toda la carta.
+- El fetch inicial puede tardar unos segundos debido al tamaño de la API.
+- La API de MTG por defecto devuelve solo las primeras **100 cartas** por request.
+  - Para obtener más cartas, se deberían realizar llamadas paginadas usando el parámetro `page` y `pageSize`, pero en este proyecto se optó por limitar la carga a las primeras 100 por simplicidad.
