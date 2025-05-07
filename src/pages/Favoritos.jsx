@@ -51,6 +51,10 @@ const Favoritos = () => {
     return <p className="text-center text-white">{t('cargando_favoritos')}</p>;
   }
 
+  const handleToggleFavorite = (id) => {
+    setFavoritas((prev) => prev.filter((carta) => carta.id !== id));
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold text-white mb-4">{t('titulo_favoritos')}</h2>
@@ -78,6 +82,7 @@ const Favoritos = () => {
                 imagen={secureImageUrl}
                 tipo={carta.type}
                 rareza={carta.rarity}
+                onToggleFavorite={handleToggleFavorite}
               />
             );
           })}
