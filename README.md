@@ -20,10 +20,10 @@ Este proyecto es una Single Page Application (SPA) desarrollada en React que con
 
 **Clonar el repositorio:**
 
-git clone https://github.com/Nico9220/React-2.git
-cd React-2
-npm install
-npm run dev
+- git clone https://github.com/Nico9220/React-2.git
+- cd React-2
+- npm install
+- npm run dev
 
 ## Funcionalidades
 
