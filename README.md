@@ -69,7 +69,3 @@ Este proyecto es una Single Page Application (SPA) desarrollada en React que con
 - El fetch inicial puede tardar unos segundos debido al tamaño de la API.
 - La API de MTG por defecto devuelve solo las primeras **100 cartas** por request.
   - Para obtener más cartas, se deberían realizar llamadas paginadas usando el parámetro `page` y `pageSize`, pero en este proyecto se optó por limitar la carga a las primeras 100 por simplicidad.
-
-```
-
-```
